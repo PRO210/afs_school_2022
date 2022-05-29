@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'dc5da93589976741c03a14fc43d4c32634753842',
+        'reference' => 'cb739785004b576592294b546f991497dbc39e93',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -440,12 +440,12 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'dc5da93589976741c03a14fc43d4c32634753842',
+            'reference' => 'cb739785004b576592294b546f991497dbc39e93',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -874,8 +874,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -894,12 +894,12 @@
             ),
         ),
         'psy/psysh' => array(
-            'pretty_version' => 'v0.11.4',
-            'version' => '0.11.4.0',
+            'pretty_version' => 'v0.11.5',
+            'version' => '0.11.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../psy/psysh',
             'aliases' => array(),
-            'reference' => '05c544b339b112226ad14803e1e5b09a61957454',
+            'reference' => 'c23686f9c48ca202710dbb967df8385a952a2daf',
             'dev_requirement' => false,
         ),
         'ralouphie/getallheaders' => array(
@@ -1116,12 +1116,12 @@
             'dev_requirement' => true,
         ),
         'symfony/deprecation-contracts' => array(
-            'pretty_version' => 'v3.0.1',
-            'version' => '3.0.1.0',
+            'pretty_version' => 'v3.1.0',
+            'version' => '3.1.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/deprecation-contracts',
             'aliases' => array(),
-            'reference' => '26954b3d62a6c5fd0ea8a2a00c0353a14978d05c',
+            'reference' => '07f1b9cc2ffee6aaafcf4b710fbc38ff736bd918',
             'dev_requirement' => false,
         ),
         'symfony/error-handler' => array(
@@ -1143,12 +1143,12 @@
             'dev_requirement' => false,
         ),
         'symfony/event-dispatcher-contracts' => array(
-            'pretty_version' => 'v3.0.1',
-            'version' => '3.0.1.0',
+            'pretty_version' => 'v3.1.0',
+            'version' => '3.1.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/event-dispatcher-contracts',
             'aliases' => array(),
-            'reference' => '7bc61cc2db649b4637d331240c5346dcc7708051',
+            'reference' => '02ff5eea2f453731cfbc6bc215e456b781480448',
             'dev_requirement' => false,
         ),
         'symfony/event-dispatcher-implementation' => array(
@@ -1329,12 +1329,12 @@
             'dev_requirement' => false,
         ),
         'symfony/translation-contracts' => array(
-            'pretty_version' => 'v3.0.1',
-            'version' => '3.0.1.0',
+            'pretty_version' => 'v3.1.0',
+            'version' => '3.1.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/translation-contracts',
             'aliases' => array(),
-            'reference' => 'c4183fc3ef0f0510893cbeedc7718fb5cafc9ac9',
+            'reference' => 'bfddd2a1faa271b782b791c361cc16e2dd49dfaa',
             'dev_requirement' => false,
         ),
         'symfony/translation-implementation' => array(

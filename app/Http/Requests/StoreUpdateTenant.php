@@ -29,6 +29,7 @@ class StoreUpdateTenant extends FormRequest
             'email' => ['required', 'min:3', 'max:255', "unique:tenants,email,{$id},id"],
             'cnpj' => ['required', 'digits:14', "unique:tenants,cnpj,{$id},id"],
             'logo' => ['nullable', 'image'],
+            'timbre' => ['nullable', 'image'],
             'active' => ['required']
         ];
 

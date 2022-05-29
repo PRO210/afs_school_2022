@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use PhpParser\Node\Stmt\Foreach_;
 
 class TenantController extends Controller
 {
@@ -30,8 +31,9 @@ class TenantController extends Controller
     {
         //$this->authorize('admins');
         $user  = Auth::user()->tenant_id;
-        $tenants = $this->repository->latest()->paginate();
+        // $tenants = $this->repository->latest()->paginate();
         // $tenants = $this->repository->with('users')->where('id', $user)->latest()->paginate();
+        $tenants = $this->repository->with('images')->get();
         $title = 'Empresa';
         return view('tenants.index', compact('tenants', 'title'));
     }
@@ -100,41 +102,18 @@ class TenantController extends Controller
      */
     public function update(StoreUpdateTenant $request, $id)
     {
-
         if (!$tenant = $this->repository->find($id)) {
             return redirect()->back();
         }
+       
+        $updateExisting = $this->repository->updateExisting($request, $tenant);  
+        
+        if ($updateExisting) {
+            return redirect()->route('tenants.index')->with('message', 'Operação Realizada com Sucesso!');
+        } else {
+            return redirect()->back()->with('error', 'Ops! Tivemos um problema :)');
+        }             
 
-        $data = $request->except('logo','timbre');
-
-        if ($request->hasFile('logo') && $request->logo->isValid()) {
-
-            // if (Storage::exists($tenant->logo)) {
-            //     Storage::delete($tenant->logo);
-            // }
-
-            /* Busca e Apaga o logo do Storage e da tabela "tenant_images" */
-            $tenant_images = TenantImages::where('tenant_id', $tenant->id)->get();
-                dd($tenant_images->logo);
-            if($tenant_images->count() > 0 && $tenant_images->logo != null){
-                // DB::table('tenant_images')->where('tenant_id', $tenant->id)->delete();
-                DB::table('tenant_images')->where('tenant_id', $tenant->id)->UPDATE(['logo' => null]);
-                Storage::delete($tenant_images->logo);
-            }
-            /* Adiciona na tabela o path do logo e no storage o arquivo */
-            $data['logo'] = $request->logo->store("tenants/{$tenant->id}/imagens");
-            $tenant = $tenant->images()->create(['tenant_id' => $tenant->id, 'logo' => $data['logo']]);
-        }
-        // if ($request->hasFile('timbre') && $request->timbre->isValid()) {
-        //     if (Storage::exists($tenant->timbre)) {
-        //         Storage::delete($tenant->timbre);
-        //     }
-        //     $data['timbre'] = $request->timbre->store("tenants/{$tenant->id}");
-        // }
-
-        $tenant->update($data);
-
-        return redirect()->route('tenants.index')->with('message', 'Operação Realizada com Sucesso!');
     }
 
     /**
