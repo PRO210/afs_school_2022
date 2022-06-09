@@ -2,6 +2,12 @@
 
 @section('content')
 
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+  <li class="breadcrumb-item "><a href="{{ route('tenants.index') }}">Escola</a></li>
+  <li class="breadcrumb-item "><a href="{{ route('tenants.show', $tenant->id) }}">Show</a></li>
+</ol>
+
   <h1>Detalhes da produto <b>{{ $tenant->name }}</b></h1>
 
   <div class="card">

@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\{
     AlunoController,
+    BookController,
     CategoryController,
     DetailPlanController,
     PermissionController,
@@ -110,6 +110,11 @@ Route::prefix('dashboard/transferidos')
 Route::prefix('dashboard/')
     ->middleware('auth')
     ->group(function () {
+        /**
+         * Routes Books
+         */      
+        Route::resource('books', BookController::class);
+
         /**
          * Routes Roles
          */

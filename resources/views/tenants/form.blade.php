@@ -16,30 +16,19 @@
           id="" type="text" placeholder="CADASTRO" name="CADASTRO" value="{{ $tenant->CADASTRO ?? old('CADASTRO') }}">
       </div>
     </div>
-
     <div class="md:flex md:items-center mb-6">
       <div class="md:w-2/6">
         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Logo:</label>
       </div>
-      <div class="md:w-4/6">
-        @foreach ($tenant->images as $image)
-          <img src="{{ url("storage/{$image->logo}") }}" alt="{{ $tenant->title }}" style="max-width: 90px; " class=" inline">
-        @endforeach
-        <input
-          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-          id="inline-full-name" type="file" name="logo" placeholder="Logo da Empresa">
-      </div>
+      {{-- Component Blade + Component Alpine --}}
+      <x-preview-image :tenant="$tenant" />
+      {{-- Component Blade + Component Alpine --}}
       <div class="md:w-2/6">
         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for=""> Timbre:</label>
       </div>
-      <div class="md:w-4/6">
-        @foreach ($tenant->images as $image)
-          <img src="{{ url("storage/{$image->timbre}") }}" alt="{{ $tenant->title }}" style="max-width: 90px; " class=" inline">
-        @endforeach
-        <input
-          class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full  text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-          id="" type="file" placeholder="Timbre da Empresa" name="timbre">
-      </div>
+      {{-- Component Blade + Component Alpine --}}
+      <x-preview-image-timbre :tenant="$tenant" />
+      {{-- Component Blade + Component Alpine --}}
     </div>
     <div class="md:flex md:items-center mb-6">
       <div class="md:w-2/6">
@@ -103,7 +92,7 @@
         <div class="md:w-2/12">
           <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">ESTADO:</label>
         </div>
-        <div class="md:w-4/12">          
+        <div class="md:w-4/12">
           <select name="ESTADO" class="form-control" @change="getCities()" x-model="stateSelected">
             <option value="" selected disabled>Escolha o Estado</option>
             <template x-for="state in states" :key="state.id">
@@ -114,7 +103,7 @@
         <div class="md:w-2/12">
           <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="">CIDADE:</label>
         </div>
-        <div class="md:w-4/12">       
+        <div class="md:w-4/12">
           <div x-show="isLoadingCities">Loading . . . .</div>
           <select name="CIDADE" class="form-control" x-ref="cities">
             <template x-for="city in cities" :key="city.id">

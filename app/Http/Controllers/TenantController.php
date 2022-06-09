@@ -4,12 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateTenant;
 use App\Models\Tenant;
-use App\Models\TenantImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use PhpParser\Node\Stmt\Foreach_;
 
 class TenantController extends Controller
 {
@@ -30,7 +27,7 @@ class TenantController extends Controller
     public function index()
     {
         //$this->authorize('admins');
-        $user  = Auth::user()->tenant_id;
+        $user  = Auth::user()->tenant_id;       
         // $tenants = $this->repository->latest()->paginate();
         // $tenants = $this->repository->with('users')->where('id', $user)->latest()->paginate();
         $tenants = $this->repository->with('images')->get();
@@ -115,7 +112,6 @@ class TenantController extends Controller
         }             
 
     }
-
     /**
      * Remove the specified resource from storage.
      *

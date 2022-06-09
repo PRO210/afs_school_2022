@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -49,6 +49,7 @@ class User extends Authenticatable
     public function scopeTenantUser($query)
     {
         return $query->where('tenant_id', auth()->user()->tenant_id);
+        
     }
     /**
      * Tenant
@@ -56,7 +57,7 @@ class User extends Authenticatable
     public function tenant()
     {
         return $this->belongsTo(Tenant::class);
-    }
+    }    
     /**
      * Get Roles
      */
